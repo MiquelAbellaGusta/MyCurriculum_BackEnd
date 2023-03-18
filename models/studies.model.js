@@ -3,43 +3,34 @@
 const getAll = () => {
     return db.query('select * from studies');
 }
-const getByUsername = (username) => {
-    return db.query('select * from studies where username = ?', [username]);
-}
-const getById = (userId) => {
-    return db.query('select * from studies where id = ?', [userId]);
-}
-const getByRange = (userRange) => {
-    return db.query('select * from studies where rango = ?', [userRange]);
-}
-const getByCategory = (category) => {
-    return db.query('select * from studies where category = ?', [category]);
+const getByClase = (clase) => {
+    return db.query('select * from studies where clase = ?', [clase]);
 }
 
 //POST
-const create = async ({ name, surname, rango, password, username, category }) => {
+const create = async ({ clase, centre, start_date, finish_date, average_grade, locality }) => {
     return await db.query(
-        'insert into studies (name, surname, rango, password,username,category) values (?,?, ?, ?, ?,?)',
-        [name, surname, rango, password, username, category]
+        'insert into studies (clase, centre, start_date, finish_date, average_grade, locality) values (?,?, ?, ?, ?,?)',
+        [clase, centre, start_date, finish_date, average_grade, locality]
     )
 }
 
 
 //PUT
 
-const update = (userId, { name, surname, rango, password, username, category }) => {
+const update = (studyId, { clase, centre, start_date, finish_date, average_grade, locality }) => {
     return db.query(
-        'update studies set name=?, surname=?, rango=?, password=?, username=?, category=?  where id = ?',
-        [name, surname, rango, password, username, category, userId]
+        'update studies set clase=?, centre=?, start_date=?, finish_date=?, average_grade=?, locality=? where id = ?',
+        [clase, centre, start_date, finish_date, average_grade, locality, studyId]
     )
 }
 
 //DELETE
 
-const deleteById = (userId) => {
-    return db.query('delete from studies where id = ?', [userId]);
+const deleteById = (studyId) => {
+    return db.query('delete from studies where id = ?', [studyId]);
 }
 
 module.exports = {
-    getAll, getById, getByRange, getByCategory, getByUsername, create, update, deleteById
+    getAll, getByClase, create, update, deleteById
 }

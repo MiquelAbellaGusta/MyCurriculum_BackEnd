@@ -1,45 +1,35 @@
 //GET
 
 const getAll = () => {
-    return db.query('select * from comments');
-}
-const getByUsername = (username) => {
-    return db.query('select * from comments where username = ?', [username]);
-}
-const getById = (userId) => {
-    return db.query('select * from comments where id = ?', [userId]);
-}
-const getByRange = (userRange) => {
-    return db.query('select * from comments where rango = ?', [userRange]);
-}
-const getByCategory = (category) => {
-    return db.query('select * from comments where category = ?', [category]);
-}
+    return db.query('select * from comments')
+};
+
+const getById = (commentId) => {
+    return db.query('select * from comments where id=?', [commentId])
+};
+
+const getByStars = (starsNum) => {
+    return db.query('select * from comments where stars=?', [starsNum])
+};
+
+const getByReviewer = (reviewer) => {
+    return db.query('select * from comments where reviewer=?', [reviewer])
+};
 
 //POST
-const create = async ({ name, surname, rango, password, username, category }) => {
-    return await db.query(
-        'insert into comments (name, surname, rango, password,username,category) values (?,?, ?, ?, ?,?)',
-        [name, surname, rango, password, username, category]
-    )
-}
-
+const create = async ({ reviewer, comment_text, comment_date, stars }) => {
+    return await db.query('insert into comments (reviewer, comment_text, comment_date, stars) values (?,?,?,?)', [reviewer, comment_text, comment_date, stars])
+};
 
 //PUT
-
-const update = (userId, { name, surname, rango, password, username, category }) => {
-    return db.query(
-        'update comments set name=?, surname=?, rango=?, password=?, username=?, category=?  where id = ?',
-        [name, surname, rango, password, username, category, userId]
-    )
-}
-
+const update = (commentId, { reviewer, comment_text, comment_date, stars }) => {
+    return db.query('update comments set reviewer=?, comment_text=?, comment_date=?, stars=? where id=?', [reviewer, comment_text, comment_date, stars, commentId])
+};
 //DELETE
-
-const deleteById = (userId) => {
-    return db.query('delete from comments where id = ?', [userId]);
-}
+const deleteById = (commentId) => {
+    return db.query('delete from comments where id=?', [commentId])
+};
 
 module.exports = {
-    getAll, getById, getByRange, getByCategory, getByUsername, create, update, deleteById
-}
+    getAll, getById, getByReviewer, getByStars, create, update, deleteById
+};

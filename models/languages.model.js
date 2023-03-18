@@ -1,45 +1,28 @@
 //GET
 
 const getAll = () => {
-    return db.query('select * from languages');
-}
-const getByUsername = (username) => {
-    return db.query('select * from languages where username = ?', [username]);
-}
-const getById = (userId) => {
-    return db.query('select * from languages where id = ?', [userId]);
-}
-const getByRange = (userRange) => {
-    return db.query('select * from languages where rango = ?', [userRange]);
-}
-const getByCategory = (category) => {
-    return db.query('select * from languages where category = ?', [category]);
-}
+    return db.query('select * from languages')
+};
+
+const getById = (languageId) => {
+    return db.query('select from languages where id=?', [languageId])
+};
 
 //POST
-const create = async ({ name, surname, rango, password, username, category }) => {
-    return await db.query(
-        'insert into languages (name, surname, rango, password,username,category) values (?,?, ?, ?, ?,?)',
-        [name, surname, rango, password, username, category]
-    )
-}
-
+const create = async ({ name, level_write, level_read, level_speak, proficiency, flag }) => {
+    return await db.query('insert into languages (name, level_write, level_read, level_speak, proficiency, flag) values (?,?,?,?,?,?)', [name, level_write, level_read, level_speak, proficiency, flag])
+};
 
 //PUT
-
-const update = (userId, { name, surname, rango, password, username, category }) => {
-    return db.query(
-        'update languages set name=?, surname=?, rango=?, password=?, username=?, category=?  where id = ?',
-        [name, surname, rango, password, username, category, userId]
-    )
-}
+const update = (languageId, { name, level_write, level_read, level_speak, proficiency, flag }) => {
+    return db.query('update languages set name=?, level_write=?, level_read=?, level_speak=?, proficiency=?, flag=? where id=?', [name, level_write, level_read, level_speak, proficiency, flag, languageId])
+};
 
 //DELETE
-
-const deleteById = (userId) => {
-    return db.query('delete from languages where id = ?', [userId]);
-}
+const deleteById = (languageId) => {
+    return db.query('delete from languages where id=?', [languageId])
+};
 
 module.exports = {
-    getAll, getById, getByRange, getByCategory, getByUsername, create, update, deleteById
-}
+    getAll, getById, create, update, deleteById
+};

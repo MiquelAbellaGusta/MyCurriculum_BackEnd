@@ -3,43 +3,35 @@
 const getAll = () => {
     return db.query('select * from skills');
 }
-const getByUsername = (username) => {
-    return db.query('select * from skills where username = ?', [username]);
-}
-const getById = (userId) => {
-    return db.query('select * from skills where id = ?', [userId]);
-}
-const getByRange = (userRange) => {
-    return db.query('select * from skills where rango = ?', [userRange]);
-}
-const getByCategory = (category) => {
-    return db.query('select * from skills where category = ?', [category]);
+
+const getById = (skillId) => {
+    return db.query('select * from skills where id = ?', [skillId]);
 }
 
 //POST
-const create = async ({ name, surname, rango, password, username, category }) => {
+const create = async ({ name, level }) => {
     return await db.query(
-        'insert into skills (name, surname, rango, password,username,category) values (?,?, ?, ?, ?,?)',
-        [name, surname, rango, password, username, category]
+        'insert into skills (name, level) values (?,?)',
+        [name, level]
     )
 }
 
 
 //PUT
 
-const update = (userId, { name, surname, rango, password, username, category }) => {
+const update = (skillId, { name, level }) => {
     return db.query(
-        'update skills set name=?, surname=?, rango=?, password=?, username=?, category=?  where id = ?',
-        [name, surname, rango, password, username, category, userId]
+        'update skills set name=?, level=?  where id = ?',
+        [name, level, skillId]
     )
 }
 
 //DELETE
 
-const deleteById = (userId) => {
-    return db.query('delete from skills where id = ?', [userId]);
+const deleteById = (skillId) => {
+    return db.query('delete from skills where id = ?', [skillId]);
 }
 
 module.exports = {
-    getAll, getById, getByRange, getByCategory, getByUsername, create, update, deleteById
+    getAll, getById, create, update, deleteById
 }
