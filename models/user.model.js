@@ -3,8 +3,8 @@
 const getAll = () => {
     return db.query('select * from user');
 }
-const getByUsername = (name) => {
-    return db.query('select * from user where name = ?', [name]);
+const getByEmail = (email) => {
+    return db.query('select * from user where email = ?', [email]);
 }
 const getById = (userId) => {
     return db.query('select * from user where id = ?', [userId]);
@@ -12,20 +12,20 @@ const getById = (userId) => {
 
 //POST
 
-const create = async ({ name, surname, age, birthdate, image, phone, mail }) => {
+const create = async ({ name, surname, age, birthdate, image, phone, email, password }) => {
     return await db.query(
-        'insert into user (name, surname, age, birthdate, image, phone, mail) values (?,?, ?, ?, ?,?,?)',
-        [name, surname, age, birthdate, image, phone, mail]
+        'insert into user (name, surname, age, birthdate, image, phone, email,password) values (?,?, ?, ?, ?,?,?,?)',
+        [name, surname, age, birthdate, image, phone, email, password]
     )
 }
 
 
 //PUT
 
-const update = (userId, { name, surname, age, birthdate, image, phone, mail }) => {
+const update = (userId, { name, surname, age, birthdate, image, phone, email, password }) => {
     return db.query(
-        'update user set name=?, surname=?, age=?, birthdate=?, image=?, phone=?, mail=?  where id = ?',
-        [name, surname, age, birthdate, image, phone, mail, userId]
+        'update user set name=?, surname=?, age=?, birthdate=?, image=?, phone=?, email=?,password=?  where id = ?',
+        [name, surname, age, birthdate, image, phone, email, password, userId]
     )
 }
 
@@ -36,5 +36,5 @@ const deleteById = (userId) => {
 }
 
 module.exports = {
-    getAll, getById, getByUsername, create, update, deleteById
+    getAll, getById, getByEmail, create, update, deleteById
 }
