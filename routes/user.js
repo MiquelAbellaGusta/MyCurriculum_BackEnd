@@ -52,7 +52,7 @@ router.post('/login', async (req, res) => {
     if (users.length === 0) {
         return res.json({ fatal: 'Error usuario y/o constraseña' });
     }
-    const [user] = users[0];
+    const user = users[0];
 
     const same = bcrypt.compareSync(req.body.password, user.password);
 
@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
         return res.json({ fatal: 'Error usuario y/o contraseña' })
     }
     res.json({
-        success: 'Benvingut' + '' + user.name,
+        success: 'Benvingut' + ' ' + user.name,
         token: createToken(user)
     });
 });

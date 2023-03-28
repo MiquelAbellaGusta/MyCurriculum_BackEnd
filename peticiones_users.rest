@@ -3,7 +3,10 @@
 //Returns a list with all users
 GET http://localhost:3000/user
 
+###
+//Return the user with the id specified in the url
 
+GET http://localhost:3000/user/5
 
 //POST
 
@@ -13,12 +16,43 @@ POST http://localhost:3000/user
 Content-Type: application/json
 
 {
-    "name": "Miquel",
-    "surname":"Abella Gustà",
-    "age":"37",
-    "birthdate":"1986-05-29",
+    "name": "",
+    "surname":"",
+    "age":"",
+    "birthdate":"",
     "image":"",
-    "phone":"670320596",
-    "email":"miquel.abella.dw@immune.institute",
-    "password":"You&me261202"
+    "phone":"",
+    "email":"",
+    "password":""
+}
+
+###
+//login
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "email":"",
+    "password":""
+}
+
+//PUT
+
+###
+//update an existing user (the userId must be specified in the url)
+
+PUT http://localhost:3000/user/5
+Content-Type: application/json
+
+{
+    "name": "",
+    "surname":"",
+    "age":"",
+    "birthdate":"",
+    "image":"",
+    "phone":"",
+    "email":"",
+    "password":""
+
 }
