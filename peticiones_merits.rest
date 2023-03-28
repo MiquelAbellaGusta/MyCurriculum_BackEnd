@@ -1,0 +1,33 @@
+//POST
+
+###
+//Create a new merit
+POST http://localhost:3000/merits
+Content-Type: application/json
+
+{
+    "name":"Matrícula d'honor en història antiga"
+}
+
+//GET
+###
+//Return a list of all merits
+
+GET http://localhost:3000/merits
+
+//PUT
+###
+//Modify the merit specified (with an id in the url) with new values
+
+PUT http://localhost:3000/merits/2
+Content-Type: application/json
+
+{
+    "name":"Matrícula d'honor en història antiga"
+}
+
+//DELETE
+###
+//Delete a merit specified in the url with an id
+
+DELETE http://localhost:3000/merits/3
