@@ -16,10 +16,10 @@ POST http://localhost:3000/user
 Content-Type: application/json
 
 {
-    "name": "",
+    "name": "Juan",
     "surname":"",
-    "age":"",
-    "birthdate":"",
+    "age":"23",
+    "birthdate":"1986-04-23",
     "image":"",
     "phone":"",
     "email":"",
@@ -56,3 +56,8 @@ Content-Type: application/json
     "password":""
 
 }
+
+//DELETE
+
+###
+DELETE http://localhost:3000/user/6

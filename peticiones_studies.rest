@@ -1,0 +1,47 @@
+//POST
+###
+//Create a new study
+
+POST http://localhost:3000/studies
+Content-Type: application/json
+
+{
+    "clase":"Web developer full stack",
+    "centre":"Immune Technology Institute",
+    "start_date":"2022-10-03",
+    "finish_date":"2023-03-10",
+    "average_grade":"10",
+    "locality":"Madrid"
+    }
+
+    //GET
+
+###
+//Return a list of all studies
+GET http://localhost:3000/studies
+
+###
+//Return the study with the id specified in the url
+
+GET http://localhost:3000/studies/1
+
+//PUT
+
+###
+//Update study data with an specified id (the id must be specified in the url)
+
+PUT http://localhost:3000/studies/1
+Content-Type: application/json
+
+{
+    "clase":"Web developer full stack",
+    "centre":"Immune Technology Institute",
+    "start_date":"2022-10-03",
+    "finish_date":"2023-03-10",
+    "average_grade":"10",
+    "locality":"Madrid"
+};
+
+//DELETE
+###
+DELETE http://localhost:3000/studies/2

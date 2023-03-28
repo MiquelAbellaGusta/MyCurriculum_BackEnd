@@ -2,9 +2,14 @@
 
 const getAll = () => {
     return db.query('select * from studies');
-}
+};
+
 const getByClase = (clase) => {
     return db.query('select * from studies where clase = ?', [clase]);
+};
+
+const getById = (studyId) => {
+    return db.query('select * from studies where id=?', [studyId]);
 }
 
 //POST
@@ -32,5 +37,5 @@ const deleteById = (studyId) => {
 }
 
 module.exports = {
-    getAll, getByClase, create, update, deleteById
+    getAll, getByClase, getById, create, update, deleteById
 }
