@@ -1,0 +1,31 @@
+//POST
+###
+//Create a new skill
+POST http://localhost:3000/skills
+Content-Type: application/json
+
+{
+    "name":"Javascript",
+    "level":"junior"
+}
+
+//GET
+###
+//Return a list of all skills
+GET http://localhost:3000/skills
+
+//PUT
+###
+//Modify the skill values
+PUT http://localhost:3000/skills/4
+Content-Type: application/json
+
+{
+    "name":"Javascript",
+    "level":"Junior"
+}
+
+//DELETE
+###
+//Delete the skill specified in the url 
+DELETE http://localhost:3000/skills/3
