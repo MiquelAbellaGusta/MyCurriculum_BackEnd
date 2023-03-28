@@ -9,13 +9,13 @@ const getById = (languageId) => {
 };
 
 //POST
-const create = async ({ name, level_write, level_read, level_speak, proficiency, flag }) => {
-    return await db.query('insert into languages (name, level_write, level_read, level_speak, proficiency, flag) values (?,?,?,?,?,?)', [name, level_write, level_read, level_speak, proficiency, flag])
+const create = async ({ name, level, flag }) => {
+    return await db.query('insert into languages (name, level, flag) values (?,?,?)', [name, level, flag])
 };
 
 //PUT
-const update = (languageId, { name, level_write, level_read, level_speak, proficiency, flag }) => {
-    return db.query('update languages set name=?, level_write=?, level_read=?, level_speak=?, proficiency=?, flag=? where id=?', [name, level_write, level_read, level_speak, proficiency, flag, languageId])
+const update = (languageId, { name, level, flag }) => {
+    return db.query('update languages set name=?, level=?, flag=? where id=?', [name, level, flag, languageId])
 };
 
 //DELETE
