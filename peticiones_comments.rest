@@ -1,0 +1,38 @@
+//POST
+###
+//Create a new comment
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+  "reviewer":"LordM",
+  "comment_text":"Que app más buena",
+  "stars":"5"
+
+   }
+
+ //PUT
+###
+//Modify the comment that you specified in the url with an id number
+
+PUT http://localhost:3000/comments/1
+Content-Type: application/json
+
+{
+    "reviewer":"LordM",
+    "comment_text":"La aplicación es una pasada",
+    "stars":"5"
+}
+
+//DELETE
+###
+//Delete the comment that you specified in the url
+
+DELETE http://localhost:3000/comments/3
+
+//GET
+###
+//Returns a list of all comments
+
+GET http://localhost:3000/comments

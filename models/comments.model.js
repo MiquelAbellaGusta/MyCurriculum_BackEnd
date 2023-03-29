@@ -17,13 +17,13 @@ const getByReviewer = (reviewer) => {
 };
 
 //POST
-const create = async ({ reviewer, comment_text, comment_date, stars }) => {
-    return await db.query('insert into comments (reviewer, comment_text, comment_date, stars) values (?,?,?,?)', [reviewer, comment_text, comment_date, stars])
+const create = async ({ reviewer, comment_text, stars }) => {
+    return await db.query('insert into comments (reviewer, comment_text,stars) values (?,?,?)', [reviewer, comment_text, stars])
 };
 
 //PUT
-const update = (commentId, { reviewer, comment_text, comment_date, stars }) => {
-    return db.query('update comments set reviewer=?, comment_text=?, comment_date=?, stars=? where id=?', [reviewer, comment_text, comment_date, stars, commentId])
+const update = (commentId, { reviewer, comment_text, stars }) => {
+    return db.query('update comments set reviewer=?, comment_text=?,stars=? where id=?', [reviewer, comment_text, stars, commentId])
 };
 //DELETE
 const deleteById = (commentId) => {
