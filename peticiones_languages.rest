@@ -1,0 +1,37 @@
+//POST
+###
+//Create a new language 
+
+POST http://localhost:3000/languages
+Content-Type: application/json
+
+{
+    "name":"",
+    "level":"",
+    "flag":""
+}
+
+//GET
+###
+//Returns a list of all languages in the DB
+
+GET http://localhost:3000/languages
+
+//PUT
+###
+//Modify the language that you specify in the url
+
+PUT http://localhost:3000/languages/2
+Content-Type: application/json
+
+{
+    "name":"",
+    "level":"",
+    "flag":""
+}
+
+//DELETE
+###
+//Delete the language that you specified in the url
+
+DELETE http://localhost:3000/languages/3

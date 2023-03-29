@@ -43,12 +43,12 @@ router.post('/', async (req, res) => {
 
 //PUT
 
-router.put('/:id', async (req, res) => {
+router.put('/:langId', async (req, res) => {
 
-  const { id } = req.params
+  const { langId } = req.params
 
   try {
-    const [result] = await update(id, req.body);
+    const [result] = await update(langId, req.body);
     const [lang] = await getById(result.insertId)
     res.json(lang)
   }
